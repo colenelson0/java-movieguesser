@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,8 +10,9 @@ public class GUI {
 
     private JLabel gameTitle;
     private JLabel quoteNum;
-    private JLabel quoteLabel;
+    private JLabel submitLabel;
     private JLabel correctLabel;
+    private JTextArea quoteText;
     private JButton startGame;
     private JButton submitGuess;
     private JButton nextButton;
@@ -39,7 +39,7 @@ public class GUI {
 
         layout.setLayout(null);
         
-        gameTitle = new JLabel("Java Movie Guesser");
+        gameTitle = new JLabel("Java Movie Guesser", JLabel.CENTER);
         gameTitle.setBounds(150,120,200,30);
         layout.add(gameTitle);
 
@@ -48,6 +48,10 @@ public class GUI {
         startGame.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
+                    // This button should remove all the components from the screen and add the ones for the game
+                    layout.remove(gameTitle);
+                    layout.remove(startGame);
+
                     // This button should call the quoteScreen method
                     quoteScreen();
                 }
@@ -58,13 +62,84 @@ public class GUI {
         window.setVisible(true);
     }
     public void quoteScreen() {
-        // This button should remove all the components from the screen and add the ones for the game
-        layout.remove(gameTitle);
-        layout.remove(startGame);
+        // New components: quoteNum, quoteText, submitLabel, guessBox, submitGuess
 
         quoteNum = new JLabel("Quote No. " + (quoteIndex + 1));
-        quoteNum.setBounds(100,90,100,30);
+        quoteNum.setBounds(100,60,100,30);
         layout.add(quoteNum);
+
+        currentQuote = quotes.getNextQuote(quoteIndex);
+        quoteIndex++;
+        quoteText = new JTextArea("\"" + currentQuote + "\"",5,5);
+        quoteText.setBounds(100,100,300,70);
+        quoteText.setEditable(false);
+        quoteText.setLineWrap(true);
+        quoteText.setWrapStyleWord(true);
+        layout.add(quoteText);
+
+        submitLabel = new JLabel("Enter guess:");
+        submitLabel.setBounds(100,180,100,30);
+        layout.add(submitLabel);
+
+        guessBox = new JTextField();
+        guessBox.setBounds(100,210,300,30);
+        layout.add(guessBox);
+
+        submitGuess = new JButton("Submit guess");
+        submitGuess.setBounds(190,250,120,35);
+        submitGuess.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    // This button should call the submissionResult method
+                    submissionResult();
+                }
+            }
+        );
+        layout.add(submitGuess);
+
+        layout.revalidate();
+        layout.repaint();
+    }
+    public void submissionResult() {
+        String guess = guessBox.getText();
+        boolean guessCorrect = quotes.checkGuess(currentQuote, guess);
+
+        // This method should remove all the components from the screen and add the ones for the submission result
+        layout.remove(quoteNum);
+        layout.remove(quoteText);
+        layout.remove(submitLabel);
+        layout.remove(guessBox);
+        layout.remove(submitGuess);
+
+        // New components: correctLabel, nextButton
+        String labelText;
+        if (guessCorrect) {
+            // The guess made by the user is correct
+            labelText = "Your guess is CORRECT!";
+        }
+        else {
+            // The guess made by the user is not correct
+            labelText = "Your guess is incorrect.";
+        }
+        correctLabel = new JLabel(labelText, JLabel.CENTER);
+        correctLabel.setBounds(150,120,200,30);
+        layout.add(correctLabel);
+
+        nextButton = new JButton("Next Quote");
+        nextButton.setBounds(200,160,100,30);
+        nextButton.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    // This button should remove all the components from the screen and add the ones for the next screen
+                    layout.remove(correctLabel);
+                    layout.remove(nextButton);
+
+                    // This button should call the quoteScreen method
+                    quoteScreen();
+                }
+            }
+        );
+        layout.add(nextButton);
 
         layout.revalidate();
         layout.repaint();
