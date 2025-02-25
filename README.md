@@ -4,7 +4,7 @@ The program that I wrote is a trivia game where you are shown a quote from a ran
 
 There were two main reasons that I wanted to do this project. The first reason is that I wanted to add Java to my skillset, since it is a popular programming language that seemed like it would be easy for me to learn. The second reason was so that I could learn how to use a programming language like this to create a GUI, since I have exclusively been making console-based programs for the last few years. I was surprised at how easy to understand this process was and was happy with what ultimately became my program.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Movie Quotes Game in Java with GUI - Demo and Walkthrough](https://www.youtube.com/watch?v=C0uCAUUod9E)
 
 # Development Environment
 
