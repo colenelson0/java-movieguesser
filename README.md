@@ -1,32 +1,24 @@
 # Overview
 
-{Important! Do not say in this section that this is college assignment. Talk about what you are trying to accomplish as a software engineer to further your learning.}
+The program that I wrote is a trivia game where you are shown a quote from a random movie and you have to correctly guess the movie that the quote is from. The number of quotes you must correctly identify to win is five and you only have three lives to start with, which you lose with each incorrect guess. An additional feature in this game is hints: if you correctly guess three quotes in a row, you gain the ability to use a hint for a quote that might be hard to identify. This program uses a Graphic User Interface or GUI for short, which presents the program's features in a graphically appealing way to the user.
 
-{Provide a description of the software that you wrote to demonstrate the Java language.}
-
-{Describe your purpose for writing this software.}
-
-{Provide a link to your YouTube demonstration. It should be a 4-5 minute demo of the software running and a walkthrough of the code. Focus should be on sharing what you learned about the language syntax.}
+There were two main reasons that I wanted to do this project. The first reason is that I wanted to add Java to my skillset, since it is a popular programming language that seemed like it would be easy for me to learn. The second reason was so that I could learn how to use a programming language like this to create a GUI, since I have exclusively been making console-based programs for the last few years. I was surprised at how easy to understand this process was and was happy with what ultimately became my program.
 
 [Software Demo Video](http://youtube.link.goes.here)
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
+This program was developed within Visual Studio Code for Mac
 
-{Describe the programming language that you used and any libraries.}
+The programming language for this program is Java and it uses the package java.awt, which contains classes for GUI, and Swing, which is an extension for java.awt. HashMap, ArrayList, and Collections are also imported for this program.
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
-
-- [Web Site Name](http://url.link.goes.here)
-- [Web Site Name](http://url.link.goes.here)
+- [Java HashMap](https://www.w3schools.com/java/java_hashmap.asp)
+- [Java String Methods](https://www.w3schools.com/java/java_ref_string.asp)
+- [Java GUI Login Tutorial](https://www.youtube.com/watch?v=iE8tZ0hn2Ws)
+- [JTextArea Discussion](https://community.spiceworks.com/t/how-to-wrap-text-string-in-jlabel/905237/4)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
-
-- Item 1
-- Item 2
-- Item 3
+- Add more movie quotes so that repeats are less frequent
